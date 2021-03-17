@@ -57,8 +57,8 @@ public class SentinelDemoTestApplication {
                 .run(args);
 
         // main方法中加载规则
-        initFlowRules();
-        initDradeRules();
-        System.err.println("规则加载完毕!");
+//        initFlowRules();
+//        initDradeRules();
+//        System.err.println("规则加载完毕!");
     }
 }
