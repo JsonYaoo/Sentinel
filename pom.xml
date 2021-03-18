@@ -80,6 +80,7 @@
         <module>sentinel-demo</module>
         <module>sentinel-benchmark</module>
         <module>my-demo-test/sentinel-demo-test</module>
+        <module>my-demo-test/apollo-test</module>
 
     </modules>
 
