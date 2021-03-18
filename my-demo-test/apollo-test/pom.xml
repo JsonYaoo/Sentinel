@@ -60,5 +60,19 @@
             <artifactId>apollo-client</artifactId>
             <version>1.8.0</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba.csp/sentinel-datasource-extension -->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-extension</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba.csp/sentinel-datasource-apollo -->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-apollo</artifactId>
+            <version>1.8.0</version>
+        </dependency>
     </dependencies>
 </project>

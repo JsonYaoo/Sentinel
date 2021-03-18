@@ -15,11 +15,11 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Sentinel DashBoard整合Apollo配置类
+ * Sentinel DashBoard整合Apollo: Sentinel服务端配置类
  */
 @Configuration
 @ConfigurationProperties(prefix = "apollo.portal")
-@ComponentScan("com.alibaba.csp.sentinel.dashboard.rule.apollo.*")
+@ComponentScan("com.alibaba.csp.sentinel.dashboard.rule.apollo")
 public class ApolloConfig implements InitializingBean {
 
     // 静态常量 => 用于访问
@@ -125,8 +125,8 @@ public class ApolloConfig implements InitializingBean {
 
         // 设置服务列表 -> 格式: Sentinel服务名称:apollo token:apollo appId:apollo thirdId(第三方服务ID)
         this.appNameConfigList.forEach(item -> {
-            String[] items = item.split(",");
-            if(item.length() == 4){
+            String[] items = item.split(":");
+            if(items.length == 4){
                 String applicationName = items[0];
                 String token = items[1];
                 String appId = items[2];
