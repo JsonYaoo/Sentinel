@@ -62,17 +62,17 @@ public class ApolloConfig implements InitializingBean {
     /**
      * appId - thirdId
      */
-    public static volatile ConcurrentHashMap<String, String> thirdIdMap = new ConcurrentHashMap<>();
+    public static volatile ConcurrentHashMap<String, String> THIRD_ID_MAP = new ConcurrentHashMap<>();
 
     /**
      * applicationName(Sentinel服务名称) - appId
      */
-    public static volatile ConcurrentHashMap<String, String> appIdMap = new ConcurrentHashMap<>();
+    public static volatile ConcurrentHashMap<String, String> APP_ID_MAP = new ConcurrentHashMap<>();
 
     /**
      * applicationName(Sentinel服务名称) - token
      */
-    public static volatile ConcurrentHashMap<String, String> tokenMap = new ConcurrentHashMap<>();
+    public static volatile ConcurrentHashMap<String, String> TOKEN_MAP = new ConcurrentHashMap<>();
 
     /**
      * FlowRuleEntity编码器
@@ -131,9 +131,9 @@ public class ApolloConfig implements InitializingBean {
                 String token = items[1];
                 String appId = items[2];
                 String thirdId = items[3];
-                thirdIdMap.putIfAbsent(appId, thirdId);
-                appIdMap.putIfAbsent(applicationName, appId);
-                tokenMap.putIfAbsent(applicationName, token);
+                THIRD_ID_MAP.putIfAbsent(appId, thirdId);
+                APP_ID_MAP.putIfAbsent(applicationName, appId);
+                TOKEN_MAP.putIfAbsent(applicationName, token);
             }
         });
     }

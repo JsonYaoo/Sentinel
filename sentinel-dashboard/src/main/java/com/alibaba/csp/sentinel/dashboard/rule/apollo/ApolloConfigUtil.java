@@ -33,7 +33,7 @@ public final class ApolloConfigUtil {
     /**
      * appId - ApolloOpenApiClient
      */
-    private static ConcurrentHashMap<String, ApolloOpenApiClient> apolloOpenApiClientMap = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, ApolloOpenApiClient> APOLLO_OPEN_API_CLIENT_MAP = new ConcurrentHashMap<>();
 
     /**
      * 格式化appName为流控规则格式: apollo-test => apollo-test-flow-rules
@@ -59,12 +59,12 @@ public final class ApolloConfigUtil {
      */
     public static ApolloOpenApiClient createApolloOpenApiClient(String appName){
         // 获取缓存的ApolloOpenApiClient
-        ApolloOpenApiClient client = apolloOpenApiClientMap.get(appName);
+        ApolloOpenApiClient client = APOLLO_OPEN_API_CLIENT_MAP.get(appName);
         if(client != null){
             return client;
         }
 
-        String token = ApolloConfig.tokenMap.get(appName);
+        String token = ApolloConfig.TOKEN_MAP.get(appName);
         if(StringUtils.isBlank(token)){
             System.err.println("创建Client失败: 根据指定的appName: " + appName + ", 找不到对应的token!");
             return null;
@@ -75,7 +75,16 @@ public final class ApolloConfigUtil {
                     .withPortalUrl(ApolloConfig.URL)
                     .withToken(token)
                     .build();
-        apolloOpenApiClientMap.putIfAbsent(appName, client);
+        APOLLO_OPEN_API_CLIENT_MAP.putIfAbsent(appName, client);
         return client;
+    }
+
+    /**
+     * 根据appId获取appName
+     * @param appName
+     * @return
+     */
+    public static String getAppIdWithAppName(String appName) {
+        return ApolloConfig.APP_ID_MAP.get(appName);
     }
 }
